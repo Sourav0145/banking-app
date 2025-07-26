@@ -38,4 +38,11 @@ public class AccountController {
         return ResponseEntity.ok(accountDto);
 
     }
+
+    //Withdraw Account REST API
+    @PutMapping("/{id}/withdraw")
+    public ResponseEntity<AccountDto> withdraw(@PathVariable Long id, @RequestBody Map<String,Double> request){
+        AccountDto accountDto=accountService.withdraw(id,request.get("amount"));
+        return ResponseEntity.ok(accountDto);
+    }
 }
